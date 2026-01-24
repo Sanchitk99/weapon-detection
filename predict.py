@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-MODEL = r"C:\Users\Sanchit\PycharmProjects\ChatBot\runs\detect\train\weights\best.pt"
+MODEL = r"D:\Project\ChatBot\runs\detect\train\weights\best.pt"
 SOURCE = r"D:\Project\weapon-detection\datasets\valid\images"
 
 model = YOLO(MODEL)

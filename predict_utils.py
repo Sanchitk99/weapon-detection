@@ -1,7 +1,6 @@
 from ultralytics import YOLO
 import cv2
 import uuid
-
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

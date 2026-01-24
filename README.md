@@ -62,14 +62,11 @@ weapon-detection/
 │── app.py                 # Streamlit application
 │── predict_utils.py       # Inference logic (gun + knife models)
 │── train.py               # Gun model training
-│── train_knife.py         # Knife model training
 │── predict.py             # CLI inference script
-│── check_knife.py         # Knife testing utility
 │
 │── datasets/              # Weapon datasets
 │── knife_dataset/         # Knife-specific dataset
 │── models/                # Trained model weights
-│── outputs/               # Detection results
 │
 │── assets/
 │   ├── screenshots/       # UI screenshots
