@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+
+# YOLO outputs
+runs/
+outputs/
+
+# Temporary files
+temp_input.jpg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Model weights (optional but recommended)
+*.pt
