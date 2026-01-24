@@ -17,5 +17,3 @@ temp_input.jpg
 .DS_Store
 Thumbs.db
 
-# Model weights (optional but recommended)
-*.pt
