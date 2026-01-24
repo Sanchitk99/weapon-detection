@@ -13,7 +13,7 @@ KNIFE_MODEL = YOLO(os.path.join(MODEL_DIR, "knife_best.pt"))
 def run_detection(image_path):
     # Run both models
     gun_results = GUN_MODEL.predict(source=image_path, conf=0.4, save=False)
-    knife_results = KNIFE_MODEL.predict(source=image_path, conf=0.10, save=False)
+    knife_results = KNIFE_MODEL.predict(source=image_path, conf=0.20, save=False)
 
     img = cv2.imread(image_path)
 
