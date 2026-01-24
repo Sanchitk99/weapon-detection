@@ -2,9 +2,13 @@ from ultralytics import YOLO
 import cv2
 import uuid
 
-# Load both models once
-GUN_MODEL = YOLO(r"D:\Project\weapon-detection\models\gun_best.pt")
-KNIFE_MODEL = YOLO(r"D:\Project\weapon-detection\models\knife_best.pt")
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
+
+GUN_MODEL = YOLO(os.path.join(MODEL_DIR, "gun_best.pt"))
+KNIFE_MODEL = YOLO(os.path.join(MODEL_DIR, "knife_best.pt"))
 
 def run_detection(image_path):
     # Run both models
