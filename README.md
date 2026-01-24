@@ -1,6 +1,14 @@
 # 🔍 Weapon Detection System (YOLOv8)
+[![Streamlit App](https://img.shields.io/badge/Streamlit-Live-brightgreen)](https://weapon-detection-sanchitk99.streamlit.app/)
 
 An end-to-end **computer vision application** that detects **guns and knives** in images using **YOLOv8** and a **Streamlit web interface**.
+
+---
+
+## 🌐 Live Demo
+
+👉 **Try the app here:**  
+https://weapon-detection-sanchitk99.streamlit.app/
 
 ---
 
