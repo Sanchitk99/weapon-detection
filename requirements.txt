@@ -1,6 +1,6 @@
 streamlit
 ultralytics==8.4.6
-opencv-python
+opencv-python-headless
 torch
 torchvision
 numpy
