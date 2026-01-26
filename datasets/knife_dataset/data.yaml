@@ -1,13 +1,7 @@
-train: ../train/images
-val: ../valid/images
-test: ../test/images
+path: D:/Project/weapon-detection/knife_datasetS
 
-nc: 1
-names: ['knives']
+train: train/images
+val: valid/images
 
-roboflow:
-  workspace: slurrphouse
-  project: knives-zcsqv-usrht
-  version: 1
-  license: CC BY 4.0
-  url: https://universe.roboflow.com/slurrphouse/knives-zcsqv-usrht/dataset/1
+names:
+  0: knife

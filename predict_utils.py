@@ -6,7 +6,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, "models")
 
-GUN_MODEL = YOLO(os.path.join(MODEL_DIR, "gun_best.pt"))
+GUN_MODEL = YOLO(os.path.join(MODEL_DIR, "gun_bestv2.pt"))
 KNIFE_MODEL = YOLO(os.path.join(MODEL_DIR, "knife_best.pt"))
 
 def run_detection(image_path):
