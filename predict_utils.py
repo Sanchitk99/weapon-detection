@@ -3,15 +3,14 @@ from PIL import Image, ImageDraw, ImageFont
 import uuid
 import os
 
-# ------------------ Paths ------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, "models")
 
 GUN_MODEL = YOLO(os.path.join(MODEL_DIR, "gun_bestv2.pt"))
 KNIFE_MODEL = YOLO(os.path.join(MODEL_DIR, "knife_best.pt"))
 
-# ------------------ Draw Function ------------------
-def draw_boxes(img, results, label_name, color):
+
+def draw_boxes(img, results, label, color):
     draw = ImageDraw.Draw(img)
 
     try:
@@ -27,29 +26,17 @@ def draw_boxes(img, results, label_name, color):
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             conf = float(box.conf[0])
 
-            label = f"{label_name} {conf:.2f}"
+            text = f"{label} {conf:.2f}"
 
-            # Bounding box
             draw.rectangle([x1, y1, x2, y2], outline=color, width=3)
-
-            # Text background
-            text_bbox = draw.textbbox((0, 0), label, font=font)
-            tw, th = text_bbox[2] - text_bbox[0], text_bbox[3] - text_bbox[1]
-
-            draw.rectangle(
-                [x1, y1 - th - 6, x1 + tw + 6, y1],
-                fill=color
-            )
-
-            # Text
-            draw.text((x1 + 3, y1 - th - 3), label, fill="white", font=font)
+            draw.text((x1, max(0, y1 - 20)), text, fill=color, font=font)
 
     return img
 
-# ------------------ Detection Runner ------------------
+
 def run_detection(image_path):
-    gun_results = GUN_MODEL.predict(source=image_path, conf=0.3, save=False)
-    knife_results = KNIFE_MODEL.predict(source=image_path, conf=0.25, save=False)
+    gun_results = GUN_MODEL.predict(image_path, conf=0.3, save=False)
+    knife_results = KNIFE_MODEL.predict(image_path, conf=0.25, save=False)
 
     img = Image.open(image_path).convert("RGB")
 
