@@ -84,7 +84,7 @@ Follow these steps to download and run the project on your machine.
 
 ### 1) Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Sanchitk99/weapon-detection.git
 cd weapon-detection
 ```
 
