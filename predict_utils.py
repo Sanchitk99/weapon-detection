@@ -34,9 +34,23 @@ def draw_boxes(img, results, label, color):
     return img
 
 
-def run_detection(image_path):
-    gun_results = GUN_MODEL.predict(image_path, conf=0.3, save=False)
-    knife_results = KNIFE_MODEL.predict(image_path, conf=0.25, save=False)
+def count_boxes(results):
+    total = 0
+    for r in results:
+        if r.boxes is None:
+            continue
+        total += len(r.boxes)
+    return total
+
+
+def run_detection(image_path, conf=0.3, gun_conf=None, knife_conf=None):
+    if gun_conf is None:
+        gun_conf = conf
+    if knife_conf is None:
+        knife_conf = conf
+
+    gun_results = GUN_MODEL.predict(image_path, conf=gun_conf, save=False)
+    knife_results = KNIFE_MODEL.predict(image_path, conf=knife_conf, save=False)
 
     img = Image.open(image_path).convert("RGB")
 
@@ -46,4 +60,9 @@ def run_detection(image_path):
     output_path = f"output_{uuid.uuid4().hex}.jpg"
     img.save(output_path)
 
-    return output_path
+    counts = {
+        "gun": count_boxes(gun_results),
+        "knife": count_boxes(knife_results),
+    }
+
+    return output_path, counts
