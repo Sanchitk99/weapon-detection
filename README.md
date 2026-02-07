@@ -78,11 +78,33 @@ weapon-detection/
 
 ---
 
-## 📦 Requirements
-1️⃣ Install dependencies using:
+## 📥 Installation Guide (Local Setup)
 
+Follow these steps to download and run the project on your machine.
+
+### 1) Clone the repository
+```bash
+git clone <your-repo-url>
+cd weapon-detection
+```
+
+### 2) Create a virtual environment (recommended)
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+### 3) Install dependencies
 ```bash
 pip install -r requirements.txt
+```
 
-2️⃣ Run the application
+### 4) Run the Streamlit app
+```bash
 streamlit run app.py
+```
+
+The app should open in your browser. If it doesn't, visit:
+```
+http://localhost:8501
+```
