@@ -208,7 +208,6 @@ with st.sidebar:
 # ---------- Hero Section ----------
 st.markdown("""
 <div class="card" style="text-align:left;">
-    <div class="section-title">Modern Tech</div>
     <h1>Weapon Detection System</h1>
     <p>
         Real-time visual inference for firearms and bladed weapons using YOLOv8.
