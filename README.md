@@ -75,7 +75,7 @@ weapon-detection/
 │── requirements.txt
 │── README.md
 │── .gitignore
-
+```
 ---
 
 ## 📥 Installation Guide (Local Setup)
