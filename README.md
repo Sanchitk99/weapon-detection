@@ -91,7 +91,7 @@ cd weapon-detection
 ### 2) Create a virtual environment (recommended)
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+.venv\Scripts\activate   # On Linux and macOS: source .venv/bin/activate
 ```
 
 ### 3) Install dependencies
