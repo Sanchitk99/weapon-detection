@@ -1,7 +1,9 @@
+import os
+os.environ.setdefault("YOLO_CONFIG_DIR", "/tmp/Ultralytics")
+
 from ultralytics import YOLO
 from PIL import Image, ImageDraw, ImageFont
 import uuid
-import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, "models")

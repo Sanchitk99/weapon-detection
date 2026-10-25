@@ -1,4 +1,5 @@
 import os
+os.environ.setdefault("YOLO_CONFIG_DIR", "/tmp/Ultralytics")
 import uuid
 from datetime import datetime, timezone
 
