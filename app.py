@@ -1,4 +1,5 @@
 import os
+import uuid
 from datetime import datetime, timezone
 
 import streamlit as st
@@ -277,8 +278,8 @@ if input_image:
     st.image(input_image, caption=input_label, use_container_width=True)
 
     if uploaded_file and input_path is None:
-    # Save temporary image
-        temp_path = "temp_input.jpg"
+        # Save temporary image with a unique filename for concurrent safety
+        temp_path = f"temp_input_{uuid.uuid4().hex}.jpg"
         with open(temp_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
         input_path = temp_path
@@ -302,12 +303,20 @@ if input_image:
         metric_b.metric("Knives", counts["knife"])
         metric_c.metric("Threshold", f"{conf_threshold:.2f}")
 
-        result_img = Image.open(output_path)
-        st.image(result_img, caption="Detection Output", use_container_width=True)
+        with Image.open(output_path) as result_img:
+            st.image(result_img, caption="Detection Output", use_container_width=True)
 
-        # Cleanup
+        # Cleanup temporary files immediately to prevent disk leaks
         if temp_path and os.path.exists(temp_path):
-            os.remove(temp_path)
+            try:
+                os.remove(temp_path)
+            except OSError:
+                pass
+        if output_path and os.path.exists(output_path):
+            try:
+                os.remove(output_path)
+            except OSError:
+                pass
 
         st.markdown("---")
         st.info("This system is intended for educational and demo purposes only.")

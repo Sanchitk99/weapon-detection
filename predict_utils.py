@@ -9,14 +9,14 @@ MODEL_DIR = os.path.join(BASE_DIR, "models")
 GUN_MODEL = YOLO(os.path.join(MODEL_DIR, "gun_bestv2.pt"))
 KNIFE_MODEL = YOLO(os.path.join(MODEL_DIR, "knife_best.pt"))
 
+try:
+    DEFAULT_FONT = ImageFont.truetype("DejaVuSans-Bold.ttf", 18)
+except Exception:
+    DEFAULT_FONT = ImageFont.load_default()
+
 
 def draw_boxes(img, results, label, color):
     draw = ImageDraw.Draw(img)
-
-    try:
-        font = ImageFont.truetype("DejaVuSans-Bold.ttf", 18)
-    except:
-        font = ImageFont.load_default()
 
     for r in results:
         if r.boxes is None:
@@ -29,7 +29,7 @@ def draw_boxes(img, results, label, color):
             text = f"{label} {conf:.2f}"
 
             draw.rectangle([x1, y1, x2, y2], outline=color, width=3)
-            draw.text((x1, max(0, y1 - 20)), text, fill=color, font=font)
+            draw.text((x1, max(0, y1 - 20)), text, fill=color, font=DEFAULT_FONT)
 
     return img
 
